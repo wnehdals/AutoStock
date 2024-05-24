@@ -1,18 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
-    id ("kotlin-kapt")
-    alias(libs.plugins.android.hilt)
-    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.jdm.autostock"
+    namespace = "com.jdm.home"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.jdm.autostock"
+        applicationId = "com.jdm.home"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -54,8 +50,7 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":feature-home")))
-    implementation(project(mapOf("path" to ":feature-setting")))
+    implementation(project(mapOf("path" to ":core")))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -64,7 +59,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(files("libs\\ops_ws_sample.jar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,18 +66,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    // hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-
-    // okhttp
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-    implementation(libs.okhttp.connection)
-    implementation(libs.retrofit.kotlin.serialization)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(kotlin("reflect"))
 
     implementation(libs.androidx.navigation.compose)
 }

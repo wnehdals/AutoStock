@@ -22,3 +22,8 @@ dependencyResolutionManagement {
 rootProject.name = "AutoStock"
 include(":app")
 include(":designsystem")
+include(":network")
+include(":model")
+include(":feature-home")
+include(":core")
+include(":feature-setting")
